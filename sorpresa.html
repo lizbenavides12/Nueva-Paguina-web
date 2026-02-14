@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja sobre fondo</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+
+<style>
+body {
+    margin: 0;
+    padding: 15px;
+    font-family: 'Georgia', serif;
+
+    background-color: #f3e8f5;
+    background-image:
+        linear-gradient(0deg, #ffffff20 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, #ffffff33 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, #ffffff22 1.5px, transparent 1.5px);
+    background-size: 100% 25px, 120px 120px, 120px 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#texto {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    line-height: 1.7;
+}
+
+
+.hoja {
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    animation: aparecer 1.2s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+p {
+    font-size: 1.05em;
+}
+
+#escenarioFinal p,
+#respuesta {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    white-space: pre-line; /* para que funcionen los \n */
+}
+
+#cerdito {
+    width: 100px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+
+#respuesta {
+    white-space: pre-line;
+}
+
+#cerdito:hover {
+    transform: scale(1.1);
+}
+
+#escenarioFinal {
+    background-color: #fff6f0;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.botones {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+}
+
+
+button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 8px;
+}
+
+.si {
+    background-color: #ff9ecd;
+}
+
+.no {
+    background-color: #cfcfcf;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hoja" id="contenido">
+    <h1>Holi 🐷</h1>
+    <p id="texto">Pícale al cerdito para cambiar el mensaje.</p>
+
+    <img id="cerdito" src="cerdito.png" alt="Cerdito" onclick="cambiarTexto()">
+</div>
+
+<div id="escenarioFinal" style="display:none;">
+    <p>Tengo una pregunta para ti…</p>
+
+    <img src="tulipan.gif" style="width:180px; margin:20px 0;">
+
+    <p>¿Aún queda un poquito de espacio para mí en tu corazón?</p>
+
+    <div class="botones">
+        <button class="si" onclick="respuestaSi()">Sí 💕</button>
+        <button class="no" 
+            onmouseover="huir()" 
+            ontouchstart="huir()" 
+            onclick="respuestaNo()">No</button>
+    </div>
+
+    <p id="respuesta"></p>
+</div>
+
+<script>
+const mensajes = [
+    "No éramos nada pero nuestra conexión fue especial. 💕",
+    "Si no eres el amor de mi vida, diré que me equivoque de vida pero no de amor",
+    "Como no me van a gustar tus ojos, si en ellos pude ver el mundo, de un color distinto",
+    "No eres una variable en mi vida... eres la constante que hace que todo mi codigo tenga sentido. ❤️   jijiji tenia que sacar mi lado programadora ",
+    "No me enamore de ti por tu cuerpo, me enamore de ti por que decidiste estar a mi lado a pesar de saber el desastre que soy.",
+    "Dicen que cuando realmente quieres a alguien, incluso si hay un millón de razones para dejarlo, todavia buscas una razon para quedarte",
+    "Esto es lo último que quería decirte…"
+];
+
+let indice = 0;
+let regresoTimeout;
+
+function cambiarTexto() {
+    if (indice < mensajes.length) {
+        document.getElementById("texto").innerText = mensajes[indice];
+        indice++;
+    } else {
+        mostrarEscenarioFinal();
+    }
+}
+
+function mostrarEscenarioFinal() {
+    document.getElementById("contenido").innerHTML =
+        document.getElementById("escenarioFinal").innerHTML;
+}
+
+function respuestaSi() {
+    document.getElementById("respuesta").innerText =
+        "Estuve pensando en lo que me dijiste la vez pasada por que ahora que ya no tengo del todo tu cariño ahora si quiero estar contigo\n\n" +
+        "y tienes razon  yo no queria nada de esto por que ni siquiera queria una relacion y creo que ya se por que\n\n" +
+        "Tu mas que nadie sabe que cuando termine con ale ni siquiera tuve un tiempo para mi por entrar luego luego en otra relacion una que para nada era sano eso si era dependencia emocional\n\n" +
+        "por que sabia que esa persona era mala me trataba horrible pero yo seguia ahi me costo como no te imaginas y claro que estar con esa persona me volvió bien mierda por que asi como te llegaba a contestar fue conmigo\n\n" +
+        "Pero cuando llegaste aparte de la manera en la que nos empezamos a hablar por que fue un error muy grande que los dos cometimos no me arrepiento de eso no pense que al final de cuentas te volverias una persona importante en mi vida\n\n" +
+        "no te lo voy a negar no pensaba en una relacion muy a fondo contigo crei que seria igual que todas las demas solo de un rato pero me equivoque, en el tiempo que estuve en el pueblo que fueron como 3 dias na mas alejarme de mi celular de ti me dieron tiempo para pensar\n\n" +
+        "claro y ahorita tambien por que a un que no dejemos de hablar me queda claro que tu y yo no estamos juntos y en parte estoy conociendo el lado tuyo siendo amigos una parte que en inicio no tuve la oportunidad de conocer\n\n" +
+        "bueno regresando al tema si te quiero y se que no tendremos lo que tuvimos de la noche a la mañana por que la confianza se gana y tambien me quiero ganar la tuya quiero conocerte bien y quiero que tambien me conozcas bien\n\n" +
+        "A lo mejor te llego a dar otra perspectiva o que se yo a lo mejor me terminas odiando que realmente espero que no verdad jajaja \n\n" +
+        "La regue y muy feo ovbiamente entenderia todas las razones para que tu ya no estes conmigo y tranquilo yo no te terminare odiando eres el niño mas tierno que he conocido y agradezco todo lo que me has enseñado \n\n" +
+        "pero esta desicion ya no depende de mi te quiero y si tu aceptas estar conmigo no espero que me des todo lo que antes tenia solo tu apoyo y cariño como siempre me lo diste hasta que podamos volver a enamorarnos \n\n" +
+        " a por cierto, quiero que tambien pienses en ti si tu no quieres nada de esto no pasa nada puedes decirmelo yo lo entendere y te seguire queriendo pero me alejare por el bien de los dos asi que te toca decidir a ti \n\n" +
+          "A veces no soy perfecta, pero todo lo que hago nace desde algo muy sincero, te quiero mucho corazón lo que quieras y descidas lo tomare de una buena manera nada mas avisame por que a mi no me llega que boton picaste a un no aprendo a hacer eso xd a y perdón por tanto texto.";
+}
+
+
+function respuestaNo() {
+    document.getElementById("respuesta").innerText =
+        "Lo entiendo… y aun así, te extrañaré cada día que sea necesario... Hasta que dejes de doler solo nunca olvides que aquí tienes a alguien que le importas, que te quiere y piensa que eres lo mejor del mundo🌷";
+}
+
+function huir() {
+    const boton = document.querySelector('.no');
+
+    const maxX = 120;
+    const maxY = 50;
+
+    const x = Math.random() * maxX * 2 - maxX;
+    const y = Math.random() * maxY * 2 - maxY;
+
+    boton.style.transform = `translate(${x}px, ${y}px)`;
+
+    clearTimeout(regresoTimeout);
+    regresoTimeout = setTimeout(() => {
+        boton.style.transform = 'translateX(-50%)';
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un regalito virtual 🐷</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        .mano {
+            font-family: 'Pacifico', cursive;
+            font-weight: bold;
+        }
+
+        .romantico {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .carta {
+            font-family: 'Georgia', serif;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #fff;
+        }
+
+        .brillante {
+            color: #272222;
+            text-shadow: 0 0 5px #1b1717, 0 0 10px #8269ff, 0 0 20px #1418ff;
+        }
+
+        .maquina {
+            overflow: hidden;
+            border-right: 3px solid white;
+            white-space: nowrap;
+            width: 0;
+            animation: escribir 4s steps(40, end) forwards, parpadeo 0.7s infinite;
+        }
+
+        @keyframes escribir {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes parpadeo {
+            50% { border-color: transparent; }
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url("fondo2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center; /* 🔹 CENTRAR TEXTO GENERAL */
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;   /* 🔹 CENTRA EL BLOQUE */
+            position: relative;
+            z-index: 1;
+            text-align: center; /* 🔹 CENTRA TEXTO INTERNO */
+        }
+
+        h1 { font-size: 2.5em; }
+
+        button {
+            background: white;
+            color: #ff4d6d;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ffe5ec;
+        }
+
+        .seccion {
+            display: none;
+            margin-top: 40px;
+            animation: aparecer 1s ease forwards;
+        }
+
+        @keyframes aparecer {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .pig {
+            position: fixed;
+            font-size: 80px;
+            cursor: pointer;
+            left: 50px;
+            top: 50px;
+            animation: saltar 1.5s infinite;
+            transition: top 0.5s, left 0.5s;
+            display: none;
+            z-index: 999;
+        }
+
+        @keyframes saltar {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .mensaje {
+            position: fixed;
+            background: white;
+            color: #ff4d6d;
+            padding: 12px;
+            border-radius: 15px;
+            max-width: 200px;
+            display: none;
+            font-size: 0.9em;
+            z-index: 998;
+            transition: top 0.5s, left 0.5s;
+        }
+
+        ul { 
+            list-style-position: inside; 
+            padding: 0; 
+            text-align: center; /* 🔹 CENTRA LA LISTA */
+        }
+
+        li { margin: 10px 0; }
+
+        .corazon {
+            font-size: 2em;
+            animation: latido 1s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="mano">Este mensaje viene con cariño y un cerdito mensajero 🐷💌 Feliz 14 💖</h1>
+        <p class="brillante"> "Holi se que no te gusta celebrar nada de esto y no creas que por que me 
+            mandaste el tik tok lo hice es algo que ya tenia empezado desde hace tiempo no lo habia terminado por
+            todas las cituaciones que tuvimos y por que un codigo no se termina de la noche a la mañana bueno lo hice 
+            con cariño espero que te💖"
+        </p>
+        <button onclick="iniciar()">Se que te gustan los cerditos asi que uno te guiara 
+            pica aqui✨</button>
+        <p> Tienes que picar al cerdito para continuar </p>
+
+        <div id="historia" class="seccion">
+            <h2>Una Notita</h2>
+            <p> ❤️ "Aunque haya kilómetros de distancia, hay personas que se sienten cerquita del corazón" ❤️</p>
+        </div>
+
+        <div id="gustos" class="seccion">
+            <h2>Razones que me hicieron quererte</h2>
+            <ul>
+                <li>Tu forma de hacerme reír</li>
+                <li>Cómo me hacias sentir especial</li>
+                <li>Que siempre estabas para mí</li>
+                <li>La pasiencia que tenias conmigo</li>
+                <li>Tus ojitos</li>
+                <li>Tu linda sonrisa siempre se me hizo muy sincera</li>
+                <li>Poquito o mucho te conozco a un que tu digas que no, se que la persona que me mostraste  
+                    fue sincera a un que aveces un poco cruel pero eso no hizo que te dejara de querer al contrario 
+                tenias razon en muchas cosas y perdoname por darme cuenta hasta tarde </li>
+            </ul>
+        </div>
+
+        <div id="carta" class="seccion">
+            <h2>Una cartita para ti 💌</h2>
+            <p>"Aunque no pueda abrazarte hoy, queria decirte lo mucho que te quiero."</p>
+            <p class="corazon">💖</p>
+        </div>
+    </div>
+
+    <div class="pig" id="pig" onclick="hablar()">🐷</div>
+    <div id="mensajeCerdito" class="mensaje"></div>
+
+    <script>
+        let paso = 0;
+        let clicsTotales = 0;
+
+        function iniciar() {
+            document.getElementById("pig").style.display = "block";
+            mostrarMensaje("¡Hola! Soy tu cerdito guía 🐷💖");
+            moverCerdito();
+        }
+
+        function hablar() {
+            paso++;
+            clicsTotales++;
+            moverCerdito();
+
+            if (clicsTotales === 10) {
+                window.location.href = "sorpresa.html";
+                return;
+            }
+
+            if (paso === 1) {
+                document.getElementById("historia").style.display = "block";
+                mostrarMensaje("Primero quiero contarte algo");
+            } 
+            else if (paso === 2) {
+                document.getElementById("gustos").style.display = "block";
+                mostrarMensaje("Pon atencion a las razones 💕");
+            } 
+            else if (paso === 3) {
+                document.getElementById("carta").style.display = "block";
+                mostrarMensaje("Y ahora… la parte más especial 💌");
+            } 
+            else if (paso === 4) {
+                mostrarMensaje("Mis movimientos son clave tu descides si seguirme o parar aqui");
+            }
+            else if (paso == 5) {
+                mostrarMensaje("a ver otra vez jijiji");
+            }
+            else if (paso == 6) {
+                mostrarMensaje("ups esa no era");
+            }
+            else if (paso == 7) {
+                mostrarMensaje("perdon, esta sera la ultima");
+            }
+            else if (paso == 8) {
+                mostrarMensaje("mm no yo creo que no");
+            }
+            else if (paso == 9) {
+                mostrarMensaje("ahora si esta sera la ultima lo prometo");
+            }
+        }
+
+        let tiempoMensaje;
+
+        function mostrarMensaje(texto) {
+            const mensaje = document.getElementById("mensajeCerdito");
+            mensaje.innerText = texto;
+            mensaje.style.display = "block";
+            clearTimeout(tiempoMensaje);
+            tiempoMensaje = setTimeout(() => {
+                mensaje.style.display = "none";
+            }, 3000);
+        }
+
+        function moverCerdito() {
+            const pig = document.getElementById("pig");
+            const mensaje = document.getElementById("mensajeCerdito");
+
+            const anchoPantalla = window.innerWidth - 120;
+            const altoPantalla = window.innerHeight - 120;
+
+            let nuevaX, nuevaY;
+            let intentos = 0;
+
+            do {
+                nuevaX = Math.random() * anchoPantalla;
+                nuevaY = Math.random() * altoPantalla;
+                intentos++;
+            } while (nuevaY > window.innerHeight * 0.55 && intentos < 20);
+
+            pig.style.left = nuevaX + "px";
+            pig.style.top = nuevaY + "px";
+
+            mensaje.style.left = (nuevaX - 20) + "px";
+            mensaje.style.top = (nuevaY - 80) + "px";
+        }
+    </script>
+
+</body>
+</html>
+
